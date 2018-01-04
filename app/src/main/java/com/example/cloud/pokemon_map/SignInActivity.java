@@ -54,7 +54,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 Log.d("SignIn", "userName = " + userName);
                 Log.d("SignIn", "passward = " + passward);
                 if (isCorrectSignIn()) {
-
+                    Self_info.actionStart(SignInActivity.this, userName);
                 }
                 else {
                     Toast.makeText(SignInActivity.this, "错误的用户名或密码.", Toast.LENGTH_SHORT).show();

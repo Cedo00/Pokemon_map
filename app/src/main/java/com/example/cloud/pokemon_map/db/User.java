@@ -8,6 +8,8 @@ import org.litepal.crud.DataSupport;
 
 public class User extends DataSupport {
 
+    private int id;
+
     private String user_name;
 
     private String user_passward;
@@ -17,6 +19,14 @@ public class User extends DataSupport {
     private boolean user_admin;
 
     private String user_headshot;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUser_name() {
         return user_name;

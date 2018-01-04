@@ -10,18 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SignInActivity"
             android:label="Pokemon_map">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".dbtest" />
-        <activity android:name=".Self_info"></activity>
+        <activity android:name=".Self_info"
+                  android:label="Profile"></activity>
     </application>
 
 </manifest>
