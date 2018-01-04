@@ -70,12 +70,12 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <TextView
+    <android.support.design.widget.NavigationView
+        android:id="@+id/self_info_nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:text="This is menu"
-        android:textSize="30dp"
-        android:background="#99FFFF"/>
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_menu_header" />
 
 </android.support.v4.widget.DrawerLayout>

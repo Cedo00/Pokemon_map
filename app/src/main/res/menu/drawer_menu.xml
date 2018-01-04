@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_menu_profile"
+            android:title="profile" />
+        <item
+            android:id="@+id/drawer_menu_handbook"
+            android:title="handbook" />
+        <item
+            android:id="@+id/drawer_menu_notbook"
+            android:title="notebook" />
+        <item
+            android:id="@+id/drawer_menu_update_handbook"
+            android:title="update_handbook" />
+    </group>
+</menu>
