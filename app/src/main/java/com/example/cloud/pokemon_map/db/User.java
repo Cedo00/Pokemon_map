@@ -1,68 +1,60 @@
 package com.example.cloud.pokemon_map.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Cloud on 2018/1/3.
  */
 
-public class User {
+public class User extends DataSupport {
 
-    private int user_Id;
+    private String user_name;
 
-    private String user_Name;
+    private String user_passward;
 
-    private String user_Passward;
+    private boolean user_gender;
 
-    private boolean user_Gender;
+    private boolean user_admin;
 
-    private boolean user_isAdmin;
+    private String user_headshot;
 
-    private String user_Headshot;
-
-    public int getUser_Id() {
-        return user_Id;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUser_Id(int user_Id) {
-        this.user_Id = user_Id;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getUser_Name() {
-        return user_Name;
+    public String getUser_passward() {
+        return user_passward;
     }
 
-    public void setUser_Name(String user_Name) {
-        this.user_Name = user_Name;
+    public void setUser_passward(String user_passward) {
+        this.user_passward = user_passward;
     }
 
-    public String getUser_Passward() {
-        return user_Passward;
+    public boolean isUser_gender() {
+        return user_gender;
     }
 
-    public void setUser_Passward(String user_Passward) {
-        this.user_Passward = user_Passward;
+    public void setUser_gender(boolean user_gender) {
+        this.user_gender = user_gender;
     }
 
-    public boolean isUser_Gender() {
-        return user_Gender;
+    public boolean isUser_admin() {
+        return user_admin;
     }
 
-    public void setUser_Gender(boolean user_Gender) {
-        this.user_Gender = user_Gender;
+    public void setUser_admin(boolean user_admin) {
+        this.user_admin = user_admin;
     }
 
-    public boolean isUser_isAdmin() {
-        return user_isAdmin;
+    public String getUser_headshot() {
+        return user_headshot;
     }
 
-    public void setUser_isAdmin(boolean user_isAdmin) {
-        this.user_isAdmin = user_isAdmin;
-    }
-
-    public String getUser_Headshot() {
-        return user_Headshot;
-    }
-
-    public void setUser_Headshot(String user_Headshot) {
-        this.user_Headshot = user_Headshot;
+    public void setUser_headshot(String user_headshot) {
+        this.user_headshot = user_headshot;
     }
 }

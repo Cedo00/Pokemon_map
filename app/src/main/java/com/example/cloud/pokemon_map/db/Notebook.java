@@ -1,14 +1,14 @@
 package com.example.cloud.pokemon_map.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Cloud on 2018/1/3.
  */
 
-public class note {
+public class Notebook extends DataSupport {
 
-    private int note_Id;
-
-    private int note_userId;
+    private String note_username;
 
     private String note_date;
 
@@ -18,20 +18,12 @@ public class note {
 
     private String note_picture;
 
-    public int getNote_Id() {
-        return note_Id;
+    public String getNote_username() {
+        return note_username;
     }
 
-    public void setNote_Id(int note_Id) {
-        this.note_Id = note_Id;
-    }
-
-    public int getNote_userId() {
-        return note_userId;
-    }
-
-    public void setNote_userId(int note_userId) {
-        this.note_userId = note_userId;
+    public void setNote_username(String note_username) {
+        this.note_username = note_username;
     }
 
     public String getNote_date() {

@@ -2,11 +2,11 @@
 <litepal>
     <dbname value="pokemon_map" />
 
-    <version value="1" />
+    <version value="4" />
 
     <list>
         <mapping class="com.example.cloud.pokemon_map.db.User" />
-        <mapping class="com.example.cloud.pokemon_map.db.pokemon" />
-        <mapping class="com.example.cloud.pokemon_map.db.note" />
+        <mapping class="com.example.cloud.pokemon_map.db.Pokemon" />
+        <mapping class="com.example.cloud.pokemon_map.db.Notebook" />
     </list>
 </litepal>
