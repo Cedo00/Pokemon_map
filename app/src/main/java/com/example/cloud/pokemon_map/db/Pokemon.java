@@ -12,7 +12,7 @@ public class Pokemon extends DataSupport {
 
     private String pokemon_name;
 
-    private String pokemon_picture;
+    private int pokemon_picture_id;
 
     private String pokemon_intro;
 
@@ -34,12 +34,12 @@ public class Pokemon extends DataSupport {
         this.pokemon_name = pokemon_name;
     }
 
-    public String getPokemon_picture() {
-        return pokemon_picture;
+    public int getPokemon_picture_id() {
+        return pokemon_picture_id;
     }
 
-    public void setPokemon_picture(String pokemon_picture) {
-        this.pokemon_picture = pokemon_picture;
+    public void setPokemon_picture_id(int pokemon_picture_id) {
+        this.pokemon_picture_id = pokemon_picture_id;
     }
 
     public String getPokemon_intro() {

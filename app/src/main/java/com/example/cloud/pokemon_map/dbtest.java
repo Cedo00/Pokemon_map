@@ -19,7 +19,16 @@ public class dbtest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dbtest_activity_layout);
 
-//        DataSupport.deleteAll(User.class);
+//        DataSupport.deleteAll(Pokemon.class);
+
+//        Pokemon addPokemon;
+//        addPokemon = new Pokemon();
+//        addPokemon.setPokemon_id(7);
+//        addPokemon.setPokemon_name("杰尼龟");
+//        addPokemon.setPokemon_picture_id(R.drawable.pm_007);
+//        addPokemon.setPokemon_intro("甲壳的作用不仅仅是用来保护自己。它圆润的外形和表面的沟槽会减小水的阻力，使它能快速地游动。");
+//        addPokemon.setPokemon_type("水");
+//        addPokemon.save();
 
         String TAG = "dbtest";
 

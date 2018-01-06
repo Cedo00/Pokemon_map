@@ -1,0 +1,13 @@
+package com.example.cloud.pokemon_map;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class PokemonItemActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.pokemon_item_activity_layout);
+    }
+}

@@ -24,10 +24,10 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Self_info extends AppCompatActivity {
+public class SelfInfoActivity extends AppCompatActivity {
 
     public static void actionStart(Context context, String userName) {
-        Intent intent = new Intent(context, Self_info.class);
+        Intent intent = new Intent(context, SelfInfoActivity.class);
         intent.putExtra("userName", userName);
         context.startActivity(intent);
     }
@@ -39,22 +39,25 @@ public class Self_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.self_info_activity_layout);
 
+        Intent intent = getIntent();
+        final String userName = intent.getStringExtra("userName");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.self_info_toolbar);
         setSupportActionBar(toolbar);
 
-        CircleImageView circle_headshot = (CircleImageView) findViewById(R.id.self_info_circle_headshot);
+        // 设置用户信息
+        CircleImageView circle_selfInfo_headshot = (CircleImageView) findViewById(R.id.self_info_circle_headshot);
         TextView text_name = (TextView) findViewById(R.id.self_info_textview_username);
         TextView text_id = (TextView) findViewById(R.id.self_info_textview_userid);
 
         String name = "";
         String id = "";
+        String headshot = "";
+        boolean isHeadShotDefault = true;
 
-        // 设置用户信息
-        Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
         List<User> users = DataSupport.where("user_name = ?", userName).find(User.class);
         for (User user: users) {
-            Log.d("Self_info", "user id is " + user.getId());
+            Log.d("SelfInfoActivity", "user id is " + user.getId());
 
             name = user.getUser_name();
             id = String.valueOf(user.getId());
@@ -64,7 +67,9 @@ public class Self_info extends AppCompatActivity {
 
             // 设置头像
             if (!Objects.equals(user.getUser_headshot(), "default")) {
-                Log.d("Self_info", "headshot not default");
+                isHeadShotDefault = false;
+                headshot = user.getUser_headshot();
+                Log.d("SelfInfoActivity", "headshot not default");
             }
         }
 
@@ -81,20 +86,45 @@ public class Self_info extends AppCompatActivity {
         View header = navView.getHeaderView(0);
         TextView menu_name = (TextView) header.findViewById(R.id.drawer_menu_textview_username);
         TextView menu_id = (TextView) header.findViewById(R.id.drawer_menu_textview_userid);
-        menu_name.setText(name);
-        menu_id.setText(id);
+        CircleImageView circle_menu_headshot = (CircleImageView) header.findViewById(R.id.drawer_menu_headshot);
+        menu_id.setText("UserId: 00" + id);
+        menu_name.setText("UserName: " + name);
+        if (!isHeadShotDefault) {
+            Log.d("SelfInfoActivity", "headshot not default");
+        }
 
         // 滑动菜单项点击事件
         navView.setCheckedItem(R.id.drawer_menu_profile);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            Intent intent;
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawerLayout.closeDrawers();
+
+                switch (item.getItemId()) {
+                    case R.id.drawer_menu_profile:
+                        break;
+
+                    case R.id.drawer_menu_handbook:
+                        PmHandbookActivity.actionStart(SelfInfoActivity.this, userName);
+                        break;
+
+                    case R.id.drawer_menu_notbook:
+                        break;
+
+                    case R.id.drawer_menu_update_handbook:
+                        break;
+
+                    default:
+                        break;
+                }
                 return true;
             }
         });
     }
 
+    // 让导航按钮起作用
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

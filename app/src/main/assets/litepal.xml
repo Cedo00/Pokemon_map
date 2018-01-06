@@ -2,7 +2,7 @@
 <litepal>
     <dbname value="pokemon_map" />
 
-    <version value="5" />
+    <version value="6" />
 
     <list>
         <mapping class="com.example.cloud.pokemon_map.db.User" />
