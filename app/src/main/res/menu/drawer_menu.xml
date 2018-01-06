@@ -10,8 +10,5 @@
         <item
             android:id="@+id/drawer_menu_notbook"
             android:title="notebook" />
-        <item
-            android:id="@+id/drawer_menu_update_handbook"
-            android:title="update_handbook" />
     </group>
 </menu>

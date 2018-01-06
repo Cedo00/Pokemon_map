@@ -96,8 +96,6 @@ public class SelfInfoActivity extends AppCompatActivity {
         // 滑动菜单项点击事件
         navView.setCheckedItem(R.id.drawer_menu_profile);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            Intent intent;
-
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawerLayout.closeDrawers();
@@ -111,9 +109,7 @@ public class SelfInfoActivity extends AppCompatActivity {
                         break;
 
                     case R.id.drawer_menu_notbook:
-                        break;
-
-                    case R.id.drawer_menu_update_handbook:
+                        NoteActivity.actionStart(SelfInfoActivity.this, userName);
                         break;
 
                     default:

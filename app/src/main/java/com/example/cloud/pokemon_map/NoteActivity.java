@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.cloud.pokemon_map.db.Pokemon;
+import com.example.cloud.pokemon_map.db.Notebook;
 import com.example.cloud.pokemon_map.db.User;
 
 import org.litepal.crud.DataSupport;
@@ -29,31 +29,29 @@ import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PmHandbookActivity extends AppCompatActivity {
-
-    private String TAG = "PmHangbook";
+public class NoteActivity extends AppCompatActivity {
 
     public static void actionStart(Context context, String userName) {
-        Intent intent = new Intent(context, PmHandbookActivity.class);
+        Intent intent = new Intent(context, NoteActivity.class);
         intent.putExtra("userName", userName);
         context.startActivity(intent);
     }
 
     private DrawerLayout mDrawerLayout;
 
-    List<Pokemon> pokemons = DataSupport.findAll(Pokemon.class);
-    private List<PokemonItem> pokemonList = new ArrayList<>();
-    private PokemonAdapter pokemonAdapter;
+    List<Notebook> notebooks;
+    private List<NoteItem> noteList = new ArrayList<>();
+    private NoteAdapter noteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pm_handbook_activity_layout);
+        setContentView(R.layout.note_activity_layout);
 
         Intent intent = getIntent();
         final String userName = intent.getStringExtra("userName");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.pm_handbook_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.note_toolbar);
         setSupportActionBar(toolbar);
 
         // 设置用户信息
@@ -64,7 +62,7 @@ public class PmHandbookActivity extends AppCompatActivity {
 
         List<User> users = DataSupport.where("user_name = ?", userName).find(User.class);
         for (User user: users) {
-            Log.d("pmhandbookActivity", "user id is " + user.getId());
+            Log.d("NoteActivity", "user id is " + user.getId());
 
             name = user.getUser_name();
             id = String.valueOf(user.getId());
@@ -73,12 +71,12 @@ public class PmHandbookActivity extends AppCompatActivity {
             if (!Objects.equals(user.getUser_headshot(), "default")) {
                 isHeadShotDefault = false;
                 headshot = user.getUser_headshot();
-                Log.d("pmhandbookActivity", "headshot not default");
+                Log.d("NoteActivity", "headshot not default");
             }
         }
 
         // 呼出滑动菜单
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.pm_handbook_drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.note_drawer_layout);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -86,7 +84,7 @@ public class PmHandbookActivity extends AppCompatActivity {
         }
 
         // 对滑动菜单中的内容进行更改
-        NavigationView navView = (NavigationView) findViewById(R.id.pm_handbook_nav_view);
+        NavigationView navView = (NavigationView) findViewById(R.id.note_nav_view);
         View header = navView.getHeaderView(0);
         TextView menu_name = (TextView) header.findViewById(R.id.drawer_menu_textview_username);
         TextView menu_id = (TextView) header.findViewById(R.id.drawer_menu_textview_userid);
@@ -94,11 +92,11 @@ public class PmHandbookActivity extends AppCompatActivity {
         menu_id.setText("UserId: 00" + id);
         menu_name.setText("UserName: " + name);
         if (!isHeadShotDefault) {
-            Log.d("pmhandbookActivity", "headshot not default");
+            Log.d("NoteActivity", "headshot not default");
         }
 
         // 滑动菜单项点击事件
-        navView.setCheckedItem(R.id.drawer_menu_handbook);
+        navView.setCheckedItem(R.id.drawer_menu_notbook);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -106,14 +104,14 @@ public class PmHandbookActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.drawer_menu_profile:
-                        SelfInfoActivity.actionStart(PmHandbookActivity.this, userName);
+                        SelfInfoActivity.actionStart(NoteActivity.this, userName);
                         break;
 
                     case R.id.drawer_menu_handbook:
+                        PmHandbookActivity.actionStart(NoteActivity.this, userName);
                         break;
 
                     case R.id.drawer_menu_notbook:
-                        NoteActivity.actionStart(PmHandbookActivity.this, userName);
                         break;
 
                     default:
@@ -123,13 +121,17 @@ public class PmHandbookActivity extends AppCompatActivity {
             }
         });
 
+        // 设置用户的记事本
+        notebooks = DataSupport.where("note_username = ?", userName)
+                               .find(Notebook.class);
+
         // 设置RecyclerView
-        initPokemons();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.pm_handbook_recyclerview);
-        GridLayoutManager layoutManger = new GridLayoutManager(this, 2);
+        initNotes();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.note_recyclerview);
+        GridLayoutManager layoutManger = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManger);
-        pokemonAdapter = new PokemonAdapter(pokemonList);
-        recyclerView.setAdapter(pokemonAdapter);
+        noteAdapter = new NoteAdapter(noteList);
+        recyclerView.setAdapter(noteAdapter);
     }
 
     // 让导航按钮起作用
@@ -146,20 +148,19 @@ public class PmHandbookActivity extends AppCompatActivity {
         return true;
     }
 
-    // 随机设置一些宝可梦
-    private void initPokemons() {
-        pokemonList.clear();
+    // 随机设置一些记录
+    private void initNotes() {
+        noteList.clear();
         for (int i = 0; i < 50; i ++) {
             Random random = new Random();
-            int index = random.nextInt(pokemons.size());
+            int index = random.nextInt(notebooks.size());
 
-            Pokemon temp_pokemon = pokemons.get(index);
-            PokemonItem item = new PokemonItem(temp_pokemon.getPokemon_id(),
-                                               temp_pokemon.getPokemon_name(),
-                                               temp_pokemon.getPokemon_picture_id(),
-                                               temp_pokemon.getPokemon_intro(),
-                                               temp_pokemon.getPokemon_type());
-            pokemonList.add(item);
+            Notebook temp_note = notebooks.get(index);
+            NoteItem item = new NoteItem(temp_note.getNote_date(),
+                                         temp_note.getNote_title(),
+                                         temp_note.getNote_content(),
+                                         temp_note.getNote_picture());
+            noteList.add(item);
         }
     }
 }

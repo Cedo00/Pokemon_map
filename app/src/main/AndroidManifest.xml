@@ -33,7 +33,11 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".PokemonItemActivity"
-            android:theme="@style/PokemonItemActivityTheme"/>
+            android:theme="@style/PokemonItemActivityTheme" />
+        <activity
+            android:name=".NoteActivity"
+            android:label="Notebook"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
