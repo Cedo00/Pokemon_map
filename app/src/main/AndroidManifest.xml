@@ -31,7 +31,9 @@
             android:name=".PmHandbookActivity"
             android:label="Handbook"
             android:launchMode="singleTask" />
-        <activity android:name=".PokemonItemActivity"></activity>
+        <activity
+            android:name=".PokemonItemActivity"
+            android:theme="@style/PokemonItemActivityTheme"/>
     </application>
 
 </manifest>

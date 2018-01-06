@@ -59,17 +59,15 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         View view = LayoutInflater.from(mContext).inflate(R.layout.pokemon_item, parent, false);
 
         final ViewHolder holder = new ViewHolder(view);
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = holder.getAdapterPosition();
-//                PokemonItem pokemon = mPokemonList.get(position);
-//                Intent intent = new Intent(mContext, FruitActivity.class);
-//                intent.putExtra(FruitActivity.FRUIT_NAME, fruit.getName());
-//                intent.putExtra(FruitActivity.FRUIT_IMAGE_ID, fruit.getImageId());
-//                mContext.startActivity(intent);
-//            }
-//        });
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                PokemonItem pokemon = mPokemonList.get(position);
+
+                PokemonItemActivity.actionStart(mContext, pokemon.getPokemon_name());
+            }
+        });
         return holder;
     }
 
