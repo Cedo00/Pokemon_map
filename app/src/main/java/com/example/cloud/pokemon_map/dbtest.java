@@ -19,6 +19,8 @@ public class dbtest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dbtest_activity_layout);
 
+//        changeNote();
+
         String TAG = "dbtest";
 
         Log.d(TAG, "db User ");
@@ -44,7 +46,7 @@ public class dbtest extends AppCompatActivity {
         Log.d(TAG, "db Notebook ");
         List<Notebook> Notebooks = DataSupport.findAll(Notebook.class);
         for (Notebook notebook:Notebooks) {
-            Log.d(TAG, "note id is " + notebook.getNote_title());
+            Log.d(TAG, "note id is " + notebook.getId());
             Log.d(TAG, "note title is " + notebook.getNote_title());
         }
     }

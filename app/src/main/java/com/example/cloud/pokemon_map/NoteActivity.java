@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cloud.pokemon_map.db.Notebook;
@@ -132,6 +133,15 @@ public class NoteActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManger);
         noteAdapter = new NoteAdapter(noteList);
         recyclerView.setAdapter(noteAdapter);
+
+        // add note 功能
+        Button add_note = (Button) findViewById(R.id.note_button_add);
+        add_note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NoteItemActivity.actionStart(NoteActivity.this, userName, -1);
+            }
+        });
     }
 
     // 让导航按钮起作用
@@ -148,7 +158,7 @@ public class NoteActivity extends AppCompatActivity {
         return true;
     }
 
-    // 随机设置一些记录
+    // 随机设置一些note
     private void initNotes() {
         noteList.clear();
         for (int i = 0; i < 50; i ++) {
