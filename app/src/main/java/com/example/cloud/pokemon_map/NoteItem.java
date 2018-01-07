@@ -16,9 +16,9 @@ public class NoteItem {
 
     private String note_content;
 
-    private String note_picture;
+    private byte[] note_picture;
 
-    public NoteItem(String note_user, int note_id, String note_date, String note_title, String note_content, String note_picture) {
+    public NoteItem(String note_user, int note_id, String note_date, String note_title, String note_content, byte[] note_picture) {
         this.note_user = note_user;
         this.note_id = note_id;
         this.note_date = note_date;
@@ -47,7 +47,7 @@ public class NoteItem {
         return note_content;
     }
 
-    public String getNote_picture() {
+    public byte[] getNote_picture() {
         return note_picture;
     }
 }

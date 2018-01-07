@@ -83,7 +83,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         Log.d("noteadapter", "title = " + note.getNote_title());
         holder.noteTitle.setText(note.getNote_title());
         holder.noteDate.setText(note.getNote_date());
-        if (Objects.equals(note.getNote_picture(), "default")) {
+        String str_img = new String(note.getNote_picture());
+        if (Objects.equals(str_img, "default")) {
             Glide.with(mContext).load(R.drawable.default_note_image).into(holder.noteImage);
         }
         else {

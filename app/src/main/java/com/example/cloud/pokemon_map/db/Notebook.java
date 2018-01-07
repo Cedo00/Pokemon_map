@@ -18,7 +18,7 @@ public class Notebook extends DataSupport {
 
     private String note_content;
 
-    private String note_picture;
+    private byte[] note_picture;
 
     public int getId() {
         return id;
@@ -60,11 +60,11 @@ public class Notebook extends DataSupport {
         this.note_content = note_content;
     }
 
-    public String getNote_picture() {
+    public byte[] getNote_picture() {
         return note_picture;
     }
 
-    public void setNote_picture(String note_picture) {
+    public void setNote_picture(byte[] note_picture) {
         this.note_picture = note_picture;
     }
 }

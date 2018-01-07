@@ -19,7 +19,8 @@ public class dbtest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dbtest_activity_layout);
 
-//        changeNote();
+        changePokemonDB();
+        changeNote();
 
         String TAG = "dbtest";
 
@@ -138,7 +139,7 @@ public class dbtest extends AppCompatActivity {
         addNote = new Notebook();
         addNote.setNote_username("Ash");
         addNote.setNote_date("2018-1-1");
-        addNote.setNote_picture("default");
+        addNote.setNote_picture("default".getBytes());
         addNote.setNote_title("第一篇");
         addNote.setNote_content("1111 好麻烦");
         addNote.save();
@@ -146,7 +147,7 @@ public class dbtest extends AppCompatActivity {
         addNote = new Notebook();
         addNote.setNote_username("Ash");
         addNote.setNote_date("2018-1-2");
-        addNote.setNote_picture("default");
+        addNote.setNote_picture("default".getBytes());
         addNote.setNote_title("第二篇");
         addNote.setNote_content("2222 不想写");
         addNote.save();
@@ -154,7 +155,7 @@ public class dbtest extends AppCompatActivity {
         addNote = new Notebook();
         addNote.setNote_username("Ash");
         addNote.setNote_date("2018-1-3");
-        addNote.setNote_picture("default");
+        addNote.setNote_picture("default".getBytes());
         addNote.setNote_title("第三篇");
         addNote.setNote_content("3333 放弃了");
         addNote.save();
@@ -162,7 +163,7 @@ public class dbtest extends AppCompatActivity {
         addNote = new Notebook();
         addNote.setNote_username("Ash");
         addNote.setNote_date("2018-1-4");
-        addNote.setNote_picture("default");
+        addNote.setNote_picture("default".getBytes());
         addNote.setNote_title("第四篇");
         addNote.setNote_content("4444 哈哈哈哈");
         addNote.save();
@@ -170,7 +171,7 @@ public class dbtest extends AppCompatActivity {
         addNote = new Notebook();
         addNote.setNote_username("Ash");
         addNote.setNote_date("2018-1-5");
-        addNote.setNote_picture("default");
+        addNote.setNote_picture("default".getBytes());
         addNote.setNote_title("第五篇");
         addNote.setNote_content("5555 再见再见");
         addNote.save();
@@ -178,7 +179,7 @@ public class dbtest extends AppCompatActivity {
         addNote = new Notebook();
         addNote.setNote_username("Asuka");
         addNote.setNote_date("2018-1-1");
-        addNote.setNote_picture("default");
+        addNote.setNote_picture("default".getBytes());
         addNote.setNote_title("asuka title 1");
         addNote.setNote_content("dgfagfgliufgliagbaidhfalgb");
         addNote.save();
