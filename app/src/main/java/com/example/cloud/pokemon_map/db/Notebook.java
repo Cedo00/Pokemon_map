@@ -8,6 +8,8 @@ import org.litepal.crud.DataSupport;
 
 public class Notebook extends DataSupport {
 
+    private int id;
+
     private String note_username;
 
     private String note_date;
@@ -17,6 +19,14 @@ public class Notebook extends DataSupport {
     private String note_content;
 
     private String note_picture;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNote_username() {
         return note_username;

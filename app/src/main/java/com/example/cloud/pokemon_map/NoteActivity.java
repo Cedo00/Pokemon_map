@@ -156,7 +156,9 @@ public class NoteActivity extends AppCompatActivity {
             int index = random.nextInt(notebooks.size());
 
             Notebook temp_note = notebooks.get(index);
-            NoteItem item = new NoteItem(temp_note.getNote_date(),
+            NoteItem item = new NoteItem(temp_note.getNote_username(),
+                                         temp_note.getId(),
+                                         temp_note.getNote_date(),
                                          temp_note.getNote_title(),
                                          temp_note.getNote_content(),
                                          temp_note.getNote_picture());

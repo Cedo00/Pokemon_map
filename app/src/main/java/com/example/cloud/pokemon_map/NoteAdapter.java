@@ -61,15 +61,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         View view = LayoutInflater.from(mContext).inflate(R.layout.note_item, parent, false);
 
         final ViewHolder holder = new ViewHolder(view);
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = holder.getAdapterPosition();
-//                PokemonItem pokemon = mPokemonList.get(position);
-//
-//                PokemonItemActivity.actionStart(mContext, pokemon.getPokemon_name());
-//            }
-//        });
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                NoteItem note = mNoteList.get(position);
+
+                Log.d("noteAdapter", "go to item " + note.getNote_user() + note.getNote_id());
+
+                NoteItemActivity.actionStart(mContext, note.getNote_user(), note.getNote_id());
+            }
+        });
         return holder;
     }
 

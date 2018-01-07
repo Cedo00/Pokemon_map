@@ -6,6 +6,10 @@ package com.example.cloud.pokemon_map;
 
 public class NoteItem {
 
+    private String note_user;
+
+    private int note_id;
+
     private String note_date;
 
     private String note_title;
@@ -14,11 +18,21 @@ public class NoteItem {
 
     private String note_picture;
 
-    public NoteItem(String note_date, String note_title, String note_content, String note_picture) {
+    public NoteItem(String note_user, int note_id, String note_date, String note_title, String note_content, String note_picture) {
+        this.note_user = note_user;
+        this.note_id = note_id;
         this.note_date = note_date;
         this.note_title = note_title;
         this.note_content = note_content;
         this.note_picture = note_picture;
+    }
+
+    public int getNote_id() {
+        return note_id;
+    }
+
+    public String getNote_user() {
+        return note_user;
     }
 
     public String getNote_date() {

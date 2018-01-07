@@ -44,7 +44,8 @@ public class dbtest extends AppCompatActivity {
         Log.d(TAG, "db Notebook ");
         List<Notebook> Notebooks = DataSupport.findAll(Notebook.class);
         for (Notebook notebook:Notebooks) {
-            Log.d(TAG, "user name is " + notebook.getNote_title());
+            Log.d(TAG, "note id is " + notebook.getNote_title());
+            Log.d(TAG, "note title is " + notebook.getNote_title());
         }
     }
 

@@ -39,9 +39,7 @@ public class PokemonItemActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.pm_item_collapsing_toolbar);
 
         setSupportActionBar(toolbar);
-
         ActionBar actionBar = getSupportActionBar();
-
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }

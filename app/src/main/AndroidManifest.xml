@@ -37,7 +37,10 @@
         <activity
             android:name=".NoteActivity"
             android:label="Notebook"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".NoteItemActivity"
+            android:label="NoteItem" />
     </application>
 
 </manifest>
